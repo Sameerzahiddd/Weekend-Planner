@@ -10,7 +10,7 @@ import { LocationTypeQuestion } from "@/components/questions/location-type-quest
 import { BudgetQuestion } from "@/components/questions/budget-question"
 import { VibeQuestion } from "@/components/questions/vibe-question"
 import { DistanceQuestion } from "@/components/questions/distance-question"
-import { BooleanQuestion } from "@/components/questions/boolean-question"
+import { FoodQuestion } from "@/components/questions/food-question"
 import { AmbienceQuestion } from "@/components/questions/ambience-question"
 import { ProgressBar } from "@/components/progress-bar"
 import {
@@ -38,9 +38,32 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
     wheelchairAccessible: null,
   })
 
+  const [answeredFields, setAnsweredFields] = useState<Set<keyof FormData>>(new Set())
+
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+    // Only mark as answered if value is not null (for boolean questions)
+    if (
+      field === "food" ||
+      field === "plugs" ||
+      field === "wifi" ||
+      field === "wheelchairAccessible"
+    ) {
+      if (value !== null) {
+        setAnsweredFields((prev) => new Set(prev).add(field))
+      } else {
+        setAnsweredFields((prev) => {
+          const updated = new Set(prev)
+          updated.delete(field)
+          return updated
+        })
+      }
+    } else {
+      setAnsweredFields((prev) => new Set(prev).add(field))
+    }
   }
+
+  const wasAnswered = (field: keyof FormData) => answeredFields.has(field)
 
   const questions = [
     {
@@ -52,70 +75,75 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
           onChange={(value) => updateFormData("locationType", value)}
         />
       ),
+      isAnswered: () => wasAnswered("locationType")
     },
     {
       title: "What's your budget per person?",
       subtitle: "Select one option or 'No Preference' to see all",
       component: <BudgetQuestion value={formData.budget} onChange={(value) => updateFormData("budget", value)} />,
+      isAnswered: () => wasAnswered("budget")
     },
     {
       title: "What vibe are you looking for?",
       subtitle: "Select one or more options or 'No Preference' to see all",
       component: <VibeQuestion value={formData.vibe} onChange={(value) => updateFormData("vibe", value)} />,
+      isAnswered: () => wasAnswered("vibe")
     },
     {
       title: "How far are you willing to travel from your residence?",
       subtitle: "Select one option or 'No Preference' to see all",
       component: <DistanceQuestion value={formData.distance} onChange={(value) => updateFormData("distance", value)} />,
+      isAnswered: () => wasAnswered("distance")
     },
     {
       title: "Do you need food availability?",
-      subtitle: "Select 'No Preference' if it doesn't matter",
+      subtitle: "Select yes, no, or 'No Preference' if it doesn't matter",
       component: (
-        <BooleanQuestion 
+        <FoodQuestion 
           value={formData.food} 
-          onChange={(value) => updateFormData("food", value)}
-          label="Food availability" 
+          onChange={(value) => updateFormData("food", value)} 
         />
       ),
+      isAnswered: () => wasAnswered("food")
     },
     {
       title: "Do you need plugs/outlets?",
-      subtitle: "Select 'No Preference' if it doesn't matter",
+      subtitle: "Select yes, no, or 'No Preference' if it doesn't matter",
       component: (
-        <BooleanQuestion 
+        <PlugsQuestion 
           value={formData.plugs} 
-          onChange={(value) => updateFormData("plugs", value)}
-          label="Plug availability" 
+          onChange={(value) => updateFormData("plugs", value)} 
         />
       ),
+      isAnswered: () => wasAnswered("plugs")
     },
     {
       title: "Do you need WiFi?",
-      subtitle: "Select 'No Preference' if it doesn't matter",
+      subtitle: "Select yes, no, or 'No Preference' if it doesn't matter",
       component: (
-        <BooleanQuestion 
+        <WifiQuestion 
           value={formData.wifi} 
-          onChange={(value) => updateFormData("wifi", value)}
-          label="WiFi availability" 
+          onChange={(value) => updateFormData("wifi", value)} 
         />
       ),
+      isAnswered: () => wasAnswered("wifi")
     },
     {
       title: "What ambience do you prefer?",
       subtitle: "Select one option or 'No Preference' to see all",
       component: <AmbienceQuestion value={formData.ambience} onChange={(value) => updateFormData("ambience", value)} />,
+      isAnswered: () => wasAnswered("ambience")
     },
     {
       title: "Do you need wheelchair accessibility?",
-      subtitle: "Select 'No Preference' if it doesn't matter",
+      subtitle: "Select yes, no, or 'No Preference' if it doesn't matter",
       component: (
-        <BooleanQuestion
-          value={formData.wheelchairAccessible}
-          onChange={(value) => updateFormData("wheelchairAccessible", value)}
-          label="Wheelchair accessibility"
+        <WheelchairAccessibilityQuestion 
+          value={formData.wheelchairAccessible} 
+          onChange={(value) => updateFormData("wheelchairAccessible", value)} 
         />
       ),
+      isAnswered: () => wasAnswered("wheelchairAccessible")
     },
   ]
 
@@ -134,71 +162,44 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
   }
 
   const isNextDisabled = () => {
-    const currentField = Object.keys(formData)[currentStep] as keyof FormData
-    const currentValue = formData[currentField]
-
-    if (currentField === "vibe") {
-      return (currentValue as string[]).length === 0
-    }
-
-    // "No Preference" values are valid - either null for booleans or "no-preference" for strings
-    return currentValue === undefined
+    return !questions[currentStep].isAnswered()
   }
 
   const progress = ((currentStep + 1) / questions.length) * 100
-  
-  // Info button with quick explanation about "No Preference"
-  const noPreferenceInfo = (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="ghost" size="sm" className="rounded-full p-2 absolute top-6 right-6">
-            <Info className="h-5 w-5 text-gray-400" />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className="w-64 text-sm">Throughout this form, selecting "No Preference" means you are fine with any option for that criteria. We'll use this to show you a wider range of recommendations.</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  )
 
   return (
-    <div className="relative">
+    <div className="w-full max-w-2xl mx-auto">
       <ProgressBar progress={progress} />
 
-      <Card className="mt-4 shadow-lg border-0">
-        <CardContent className="p-6 relative">
-          {noPreferenceInfo}
-          
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="min-h-[300px]"
-            >
-              <h2 className="text-2xl font-semibold mb-2 text-gray-800">{questions[currentStep].title}</h2>
-              <p className="text-sm text-gray-500 mb-6 italic">{questions[currentStep].subtitle}</p>
-              {questions[currentStep].component}
-            </motion.div>
-          </AnimatePresence>
+      <Card className="mt-6">
+        <CardContent className="p-6">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h2 className="text-xl font-semibold">{questions[currentStep].title}</h2>
+              <p className="text-sm text-muted-foreground">{questions[currentStep].subtitle}</p>
+            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="w-5 h-5 text-muted-foreground" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Choosing “No Preference” includes more options.</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
 
-          <div className="flex justify-between mt-8">
-            <Button
-              variant="outline"
-              onClick={goToPreviousStep}
-              disabled={currentStep === 0}
-              className="flex items-center gap-2"
-            >
-              <ChevronLeft className="h-4 w-4" />
+          {questions[currentStep].component}
+
+          <div className="mt-6 flex justify-between">
+            <Button variant="outline" onClick={goToPreviousStep} disabled={currentStep === 0}>
+              <ChevronLeft className="mr-2 h-4 w-4" />
               Back
             </Button>
-            <Button onClick={goToNextStep} disabled={isNextDisabled()} className="flex items-center gap-2">
+            <Button onClick={goToNextStep} disabled={isNextDisabled()}>
               {currentStep === questions.length - 1 ? "Submit" : "Next"}
-              {currentStep !== questions.length - 1 && <ChevronRight className="h-4 w-4" />}
+              <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </CardContent>

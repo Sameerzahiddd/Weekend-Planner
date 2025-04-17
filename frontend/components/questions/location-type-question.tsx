@@ -12,17 +12,27 @@ import {
 
 interface LocationTypeQuestionProps {
   value: string | null
-  onChange: (value: string) => void
+  onChange: (value: string | null) => void
 }
 
 export function LocationTypeQuestion({ value, onChange }: LocationTypeQuestionProps) {
+  // Toggle selection
+  const handleSelection = (selected: string) => {
+    // If the same button is clicked again, deselect it
+    if (value === selected) {
+      onChange(null);
+    } else {
+      onChange(selected);
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Button
           variant={value === "indoor" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("indoor")}
+          onClick={() => handleSelection("indoor")}
           disabled={value === "no-preference"}
         >
           <Home className="h-8 w-8" />
@@ -32,7 +42,7 @@ export function LocationTypeQuestion({ value, onChange }: LocationTypeQuestionPr
         <Button
           variant={value === "outdoor" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("outdoor")}
+          onClick={() => handleSelection("outdoor")}
           disabled={value === "no-preference"}
         >
           <TreePine className="h-8 w-8" />
@@ -45,7 +55,7 @@ export function LocationTypeQuestion({ value, onChange }: LocationTypeQuestionPr
               <Button
                 variant={value === "no-preference" ? "default" : "outline"}
                 className="h-24 flex flex-col items-center justify-center gap-2 relative"
-                onClick={() => onChange("no-preference")}
+                onClick={() => value === "no-preference" ? onChange(null) : onChange("no-preference")}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>
@@ -60,8 +70,8 @@ export function LocationTypeQuestion({ value, onChange }: LocationTypeQuestionPr
       </div>
       
       {value === "no-preference" && (
-        <p className="text-sm text-blue-600 italic">
-          You selected "No Preference" - we'll show you both indoor and outdoor locations.
+        <p className="text-sm bg-blue-50 text-blue-700 p-3 rounded-md border border-blue-100">
+          <strong>Note:</strong> You selected "No Preference" - we'll show you both indoor and outdoor locations. For more tailored results, select a specific option.
         </p>
       )}
     </div>

@@ -12,17 +12,27 @@ import {
 
 interface BudgetQuestionProps {
   value: string | null
-  onChange: (value: string) => void
+  onChange: (value: string | null) => void
 }
 
 export function BudgetQuestion({ value, onChange }: BudgetQuestionProps) {
+  // Toggle selection
+  const handleSelection = (selected: string) => {
+    // If the same button is clicked again, deselect it
+    if (value === selected) {
+      onChange(null);
+    } else {
+      onChange(selected);
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Button
           variant={value === "free" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("free")}
+          onClick={() => handleSelection("free")}
           disabled={value === "no-preference"}
         >
           <span className="text-2xl">🆓</span>
@@ -33,7 +43,7 @@ export function BudgetQuestion({ value, onChange }: BudgetQuestionProps) {
         <Button
           variant={value === "low" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("low")}
+          onClick={() => handleSelection("low")}
           disabled={value === "no-preference"}
         >
           <DollarSign className="h-6 w-6" />
@@ -44,7 +54,7 @@ export function BudgetQuestion({ value, onChange }: BudgetQuestionProps) {
         <Button
           variant={value === "high" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("high")}
+          onClick={() => handleSelection("high")}
           disabled={value === "no-preference"}
         >
           <div className="flex">
@@ -61,7 +71,7 @@ export function BudgetQuestion({ value, onChange }: BudgetQuestionProps) {
               <Button
                 variant={value === "no-preference" ? "default" : "outline"}
                 className="h-24 flex flex-col items-center justify-center gap-2 relative"
-                onClick={() => onChange("no-preference")}
+                onClick={() => value === "no-preference" ? onChange(null) : onChange("no-preference")}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>
@@ -76,8 +86,8 @@ export function BudgetQuestion({ value, onChange }: BudgetQuestionProps) {
       </div>
       
       {value === "no-preference" && (
-        <p className="text-sm text-blue-600 italic">
-          You selected "No Preference" - we'll show you options across all price ranges.
+        <p className="text-sm bg-blue-50 text-blue-700 p-3 rounded-md border border-blue-100">
+          <strong>Note:</strong> You selected "No Preference" - we'll show you options across all price ranges. For more budget-specific recommendations, select a price range.
         </p>
       )}
     </div>

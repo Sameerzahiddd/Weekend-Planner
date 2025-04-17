@@ -11,17 +11,27 @@ import {
 
 interface DistanceQuestionProps {
   value: string | null
-  onChange: (value: string) => void
+  onChange: (value: string | null) => void
 }
 
 export function DistanceQuestion({ value, onChange }: DistanceQuestionProps) {
+  // Toggle selection
+  const handleSelection = (selected: string) => {
+    // If the same button is clicked again, deselect it
+    if (value === selected) {
+      onChange(null);
+    } else {
+      onChange(selected);
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Button
           variant={value === "short" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("short")}
+          onClick={() => handleSelection("short")}
           disabled={value === "no-preference"}
         >
           <span className="text-2xl">🚶</span>
@@ -32,7 +42,7 @@ export function DistanceQuestion({ value, onChange }: DistanceQuestionProps) {
         <Button
           variant={value === "medium" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("medium")}
+          onClick={() => handleSelection("medium")}
           disabled={value === "no-preference"}
         >
           <span className="text-2xl">🚲</span>
@@ -43,7 +53,7 @@ export function DistanceQuestion({ value, onChange }: DistanceQuestionProps) {
         <Button
           variant={value === "high" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
-          onClick={() => onChange("high")}
+          onClick={() => handleSelection("high")}
           disabled={value === "no-preference"}
         >
           <span className="text-2xl">🚗</span>
@@ -57,7 +67,7 @@ export function DistanceQuestion({ value, onChange }: DistanceQuestionProps) {
               <Button
                 variant={value === "no-preference" ? "default" : "outline"}
                 className="h-24 flex flex-col items-center justify-center gap-2 relative"
-                onClick={() => onChange("no-preference")}
+                onClick={() => value === "no-preference" ? onChange(null) : onChange("no-preference")}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>
@@ -72,8 +82,8 @@ export function DistanceQuestion({ value, onChange }: DistanceQuestionProps) {
       </div>
       
       {value === "no-preference" && (
-        <p className="text-sm text-blue-600 italic">
-          You selected "No Preference" - we'll show you options at all distances.
+        <p className="text-sm bg-blue-50 text-blue-700 p-3 rounded-md border border-blue-100">
+          <strong>Note:</strong> You selected "No Preference" - we'll show you options at all distances. For more location-specific recommendations, select a distance range.
         </p>
       )}
     </div>

@@ -15,6 +15,13 @@ const api = axios.create({
 const transformFormData = (formData: FormData) => {
   const transformed = { ...formData };
   
+  // Handle undefined values - convert to null
+  Object.keys(transformed).forEach(key => {
+    if (transformed[key as keyof FormData] === undefined) {
+      transformed[key as keyof FormData] = null;
+    }
+  });
+  
   // Handle no-preference values
   if (transformed.locationType === "no-preference") {
     // Set to null to indicate no filtering on this attribute
@@ -47,6 +54,8 @@ export const getRecommendations = async (formData: FormData) => {
     // Transform data before sending to API
     const transformedData = transformFormData(formData);
     
+    console.log("Sending to API:", transformedData);
+    
     const response = await api.post('/api/recommendations', transformedData);
     return response.data;
   } catch (error) {
@@ -61,6 +70,20 @@ export const getPlaces = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching places:', error);
+    throw error;
+  }
+};
+
+// This would be the function to query Prolog at each step
+export const queryPrologForSuggestions = async (currentData: Partial<FormData>, newPreference: Partial<FormData>) => {
+  try {
+    const response = await api.post('/api/prolog-query', {
+      currentPreferences: currentData,
+      newPreference: newPreference
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error querying Prolog:', error);
     throw error;
   }
 };

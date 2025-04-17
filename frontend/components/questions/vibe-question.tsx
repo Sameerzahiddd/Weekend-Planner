@@ -18,8 +18,10 @@ interface VibeQuestionProps {
 export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
   const toggleVibe = (vibe: string) => {
     if (value.includes(vibe)) {
+      // Remove the vibe if it's already selected
       onChange(value.filter((v) => v !== vibe))
     } else {
+      // Add the vibe if it's not selected
       onChange([...value, vibe])
     }
   }
@@ -29,13 +31,18 @@ export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
   }
 
   const selectNoPreference = () => {
-    onChange(["no-preference"])
+    // Toggle no-preference
+    if (value.includes("no-preference")) {
+      onChange([])
+    } else {
+      onChange(["no-preference"])
+    }
   }
 
   return (
     <div className="space-y-4">
       <p className="text-sm text-gray-600 mb-3">
-        <strong>Tip:</strong> Click multiple options to select more than one vibe.
+        <strong>Tip:</strong> Click multiple options to select more than one vibe, or click again to deselect.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
@@ -96,7 +103,6 @@ export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
                 variant={value.includes("no-preference") ? "default" : "outline"}
                 className="h-20 flex flex-col items-center justify-center gap-2 relative"
                 onClick={selectNoPreference}
-                disabled={value.length > 0 && !value.includes("no-preference")}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>
@@ -119,8 +125,8 @@ export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
       )}
 
       {value.includes("no-preference") ? (
-        <p className="text-sm text-blue-600 italic">
-          You selected "No Preference" - we'll show you places with all types of vibes.
+        <p className="text-sm bg-blue-50 text-blue-700 p-3 rounded-md border border-blue-100">
+          <strong>Note:</strong> You selected "No Preference" - we'll show you places with all types of vibes. For more personalized recommendations, select specific vibes that interest you.
         </p>
       ) : (
         <p className="text-sm text-gray-500 mt-2">
