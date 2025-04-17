@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 interface BooleanQuestionProps {
   value: boolean | null
-  onChange: (value: boolean) => void
+  onChange: (value: boolean | null) => void
 }
 
 export function BooleanQuestion({ value, onChange }: BooleanQuestionProps) {
@@ -35,6 +35,7 @@ export function BooleanQuestion({ value, onChange }: BooleanQuestionProps) {
       >
         <span className="text-2xl">🤷</span>
         <span>No Preference</span>
+        <span className="text-xs text-gray-500">(Any option works)</span>
       </Button>
     </div>
   )

@@ -1,0 +1,97 @@
+[
+    {
+      "id": "cafe_reveille",
+      "name": "Cafe Reveille",
+      "description": "Cozy cafe with great coffee and study-friendly atmosphere.",
+      "address": "1998 Polk Street, San Francisco, CA",
+      "website": "https://www.cafereveille.com/",
+      "image": "/placeholder.jpg",
+      "attributes": {
+        "locationType": "indoor",
+        "budget": "low",
+        "vibe": ["chill", "study", "social"],
+        "distance": "short",
+        "food": true,
+        "plugs": true,
+        "wifi": true,
+        "ambience": "quiet",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "dolores_park",
+      "name": "Dolores Park",
+      "description": "Sunny park with stunning city views, perfect for picnics and people-watching.",
+      "address": "Dolores St & 19th St, San Francisco, CA 94114",
+      "website": "https://sfrecpark.org/destination/mission-dolores-park/",
+      "image": "/placeholder.jpg",
+      "attributes": {
+        "locationType": "outdoor",
+        "budget": "free",
+        "vibe": ["chill", "social"],
+        "distance": "short",
+        "food": true,
+        "plugs": false,
+        "wifi": false,
+        "ambience": "crowded",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "blue_bottle",
+      "name": "Blue Bottle Coffee",
+      "description": "Modern coffee shop known for high-quality, freshly roasted coffee and a minimalist atmosphere.",
+      "address": "705 Market Street, San Francisco, CA",
+      "website": "https://bluebottlecoffee.com/",
+      "image": "/placeholder.jpg",
+      "attributes": {
+        "locationType": "indoor",
+        "budget": "low",
+        "vibe": ["chill", "study", "social"],
+        "distance": "short",
+        "food": true,
+        "plugs": true,
+        "wifi": true,
+        "ambience": "quiet",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "mission_bay_branch_library",
+      "name": "Mission Bay Branch Library",
+      "description": "Modern library in the Mission Bay area, providing a peaceful study environment.",
+      "address": "960 4th Street, San Francisco, CA",
+      "website": "https://sfpl.org/locations/mission-bay",
+      "image": "/placeholder.jpg",
+      "attributes": {
+        "locationType": "indoor",
+        "budget": "free",
+        "vibe": ["study"],
+        "distance": "short",
+        "food": false,
+        "plugs": true,
+        "wifi": true,
+        "ambience": "quiet",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "golden_gate_park",
+      "name": "Golden Gate Park",
+      "description": "Vast urban park with gardens, museums, and recreational areas.",
+      "address": "501 Stanyan St, San Francisco, CA 94117",
+      "website": "https://goldengatepark.com",
+      "image": "/placeholder.jpg",
+      "attributes": {
+        "locationType": "outdoor",
+        "budget": "free",
+        "vibe": ["sport", "chill", "romantic"],
+        "distance": "high",
+        "food": true,
+        "plugs": false,
+        "wifi": false,
+        "ambience": "crowded",
+        "wheelchairAccessible": true
+      }
+    }
+  ]

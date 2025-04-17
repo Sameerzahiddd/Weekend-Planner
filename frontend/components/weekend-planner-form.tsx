@@ -35,70 +35,97 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
-
-  const questions = [
-    {
-      title: "Do you prefer indoor or outdoor locations?",
-      subtitle: "Select one option",
-      component: (
-        <LocationTypeQuestion
-          value={formData.locationType}
-          onChange={(value) => updateFormData("locationType", value)}
-        />
-      ),
-    },
-    {
-      title: "What's your budget per person?",
-      subtitle: "Select one option",
-      component: <BudgetQuestion value={formData.budget} onChange={(value) => updateFormData("budget", value)} />,
-    },
-    {
-      title: "What vibe are you looking for?",
-      subtitle: "Select one or more options",
-      component: <VibeQuestion value={formData.vibe} onChange={(value) => updateFormData("vibe", value)} />,
-    },
-    {
-      title: "How far are you willing to travel from your residence?",
-      subtitle: "Select one option",
-      component: <DistanceQuestion value={formData.distance} onChange={(value) => updateFormData("distance", value)} />,
-    },
-    {
-      title: "Do you need food availability?",
-      subtitle: "Select one option",
-      component: <BooleanQuestion value={formData.food} onChange={(value) => updateFormData("food", value)} />,
-    },
-    {
-      title: "Do you need plugs/outlets?",
-      subtitle: "Select one option",
-      component: <BooleanQuestion value={formData.plugs} onChange={(value) => updateFormData("plugs", value)} />,
-    },
-    {
-      title: "Do you need WiFi?",
-      subtitle: "Select one option",
-      component: <BooleanQuestion value={formData.wifi} onChange={(value) => updateFormData("wifi", value)} />,
-    },
-    {
-      title: "What ambience do you prefer?",
-      subtitle: "Select one option",
-      component: <AmbienceQuestion value={formData.ambience} onChange={(value) => updateFormData("ambience", value)} />,
-    },
-    {
-      title: "Do you need wheelchair accessibility?",
-      subtitle: "Select one option",
-      component: (
-        <BooleanQuestion
-          value={formData.wheelchairAccessible}
-          onChange={(value) => updateFormData("wheelchairAccessible", value)}
-        />
-      ),
-    },
-  ]
+  
+  // Determine if we should skip the plug question based on location type
+  const shouldSkipPlugsQuestion = formData.locationType === "outdoor"
+  
+  // Build questions array dynamically to skip irrelevant questions
+  const buildQuestions = () => {
+    const allQuestions = [
+      {
+        title: "Do you prefer indoor or outdoor locations?",
+        subtitle: "Select one option",
+        field: "locationType",
+        component: (
+          <LocationTypeQuestion
+            value={formData.locationType}
+            onChange={(value) => updateFormData("locationType", value)}
+          />
+        ),
+      },
+      {
+        title: "What's your budget per person?",
+        subtitle: "Select one option",
+        field: "budget",
+        component: <BudgetQuestion value={formData.budget} onChange={(value) => updateFormData("budget", value)} />,
+      },
+      {
+        title: "What vibe are you looking for?",
+        subtitle: "Select one or more options",
+        field: "vibe",
+        component: <VibeQuestion value={formData.vibe} onChange={(value) => updateFormData("vibe", value)} />,
+      },
+      {
+        title: "How far are you willing to travel from your residence?",
+        subtitle: "Select one option",
+        field: "distance",
+        component: <DistanceQuestion value={formData.distance} onChange={(value) => updateFormData("distance", value)} />,
+      },
+      {
+        title: "Do you need food availability?",
+        subtitle: "Select one option",
+        field: "food",
+        component: <BooleanQuestion value={formData.food} onChange={(value) => updateFormData("food", value)} />,
+      },
+      {
+        title: "Do you need plugs/outlets?",
+        subtitle: "Select one option if relevant",
+        field: "plugs",
+        skip: shouldSkipPlugsQuestion,
+        component: <BooleanQuestion value={formData.plugs} onChange={(value) => updateFormData("plugs", value)} />,
+      },
+      {
+        title: "Do you need WiFi?",
+        subtitle: "Select one option",
+        field: "wifi",
+        component: <BooleanQuestion value={formData.wifi} onChange={(value) => updateFormData("wifi", value)} />,
+      },
+      {
+        title: "What ambience do you prefer?",
+        subtitle: "Select one option",
+        field: "ambience",
+        component: <AmbienceQuestion value={formData.ambience} onChange={(value) => updateFormData("ambience", value)} />,
+      },
+      {
+        title: "Do you need wheelchair accessibility?",
+        subtitle: "Select one option",
+        field: "wheelchairAccessible",
+        component: (
+          <BooleanQuestion
+            value={formData.wheelchairAccessible}
+            onChange={(value) => updateFormData("wheelchairAccessible", value)}
+          />
+        ),
+      },
+    ]
+    
+    // Filter out questions that should be skipped
+    return allQuestions.filter(question => !question.skip)
+  }
+  
+  const questions = buildQuestions()
 
   const goToNextStep = () => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      onSubmit(formData)
+      // If we skipped any questions, make sure they have default values
+      const finalFormData = { ...formData }
+      if (shouldSkipPlugsQuestion) {
+        finalFormData.plugs = false // Default value for outdoor locations
+      }
+      
+      onSubmit(finalFormData)
     }
   }
 
@@ -109,14 +136,17 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
   }
 
   const isNextDisabled = () => {
-    const currentField = Object.keys(formData)[currentStep] as keyof FormData
+    // Get the field for the current step
+    const currentField = questions[currentStep].field as keyof FormData
     const currentValue = formData[currentField]
 
+    // For vibe field, check if there's at least one vibe selected
     if (currentField === "vibe") {
       return (currentValue as string[]).length === 0
     }
 
-    return currentValue === null
+    // All other fields allow null (no preference)
+    return false
   }
 
   const progress = ((currentStep + 1) / questions.length) * 100

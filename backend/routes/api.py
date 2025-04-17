@@ -26,7 +26,7 @@ def get_recommendations():
 @api_bp.route('/places', methods=['GET'])
 def get_places():
     try:
-        # Get sample data (in production, this would come from a database)
+        # Get data from sf_places.json
         current_dir = os.path.dirname(os.path.abspath(__file__))
         data_path = os.path.join(os.path.dirname(current_dir), 'data', 'sf_places.json')
         
