@@ -11,7 +11,10 @@ import { BudgetQuestion } from "@/components/questions/budget-question"
 import { VibeQuestion } from "@/components/questions/vibe-question"
 import { DistanceQuestion } from "@/components/questions/distance-question"
 import { FoodQuestion } from "@/components/questions/food-question"
+import { PlugsQuestion } from "@/components/questions/plugs-question"
+import { WifiQuestion } from "@/components/questions/wifi-question"
 import { AmbienceQuestion } from "@/components/questions/ambience-question"
+import { WheelchairAccessibilityQuestion } from "@/components/questions/wheelchair-accessibility-question"
 import { ProgressBar } from "@/components/progress-bar"
 import {
   Tooltip,
