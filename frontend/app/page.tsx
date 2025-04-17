@@ -5,6 +5,7 @@ import Image from "next/image"
 import { WeekendPlannerForm } from "@/components/weekend-planner-form"
 import { RecommendationResults } from "@/components/recommendation-results"
 import type { FormData } from "@/types/form-data"
+import { getRecommendations } from "@/lib/api"
 
 export default function Home() {
   const [formData, setFormData] = useState<FormData | null>(null)
@@ -16,36 +17,12 @@ export default function Home() {
     setIsLoading(true)
 
     try {
-      // For demo purposes, we'll use mock data instead of making an actual API call
-      // In a real application, uncomment and use the fetch code below with your actual API endpoint
-
-      /* 
-      // Replace with your actual API endpoint
-      const response = await fetch("[your-railway-app-url]/recommendations", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
-
-      const result = await response.json();
-      setRecommendations(result);
-      */
-
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // Use mock data for demonstration
-      setRecommendations(mockRecommendations)
+      const recommendations = await getRecommendations(data);
+      setRecommendations(recommendations);
     } catch (error) {
       console.error("Error:", error)
-      // Always fall back to mock data if there's an error
-      setRecommendations(mockRecommendations)
+      // Show error state instead of falling back to mock data
+      setRecommendations([])
     } finally {
       setIsLoading(false)
     }

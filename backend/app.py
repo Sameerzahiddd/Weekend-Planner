@@ -18,4 +18,6 @@ def health_check():
     return {"status": "healthy", "message": "SF Weekend Planner API is running"}
 
 if __name__ == '__main__':
-    app.run(host=host, port=port)
+    # Only run the development server if explicitly set
+    if os.environ.get("FLASK_ENV") == "development":
+        app.run(host=host, port=port)
