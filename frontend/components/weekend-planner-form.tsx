@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import type { FormData } from "@/types/form-data"
@@ -13,6 +13,12 @@ import { DistanceQuestion } from "@/components/questions/distance-question"
 import { BooleanQuestion } from "@/components/questions/boolean-question"
 import { AmbienceQuestion } from "@/components/questions/ambience-question"
 import { ProgressBar } from "@/components/progress-bar"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
 
 interface WeekendPlannerFormProps {
   onSubmit: (data: FormData) => void
@@ -35,97 +41,89 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
-  
-  // Determine if we should skip the plug question based on location type
-  const shouldSkipPlugsQuestion = formData.locationType === "outdoor"
-  
-  // Build questions array dynamically to skip irrelevant questions
-  const buildQuestions = () => {
-    const allQuestions = [
-      {
-        title: "Do you prefer indoor or outdoor locations?",
-        subtitle: "Select one option",
-        field: "locationType",
-        component: (
-          <LocationTypeQuestion
-            value={formData.locationType}
-            onChange={(value) => updateFormData("locationType", value)}
-          />
-        ),
-      },
-      {
-        title: "What's your budget per person?",
-        subtitle: "Select one option",
-        field: "budget",
-        component: <BudgetQuestion value={formData.budget} onChange={(value) => updateFormData("budget", value)} />,
-      },
-      {
-        title: "What vibe are you looking for?",
-        subtitle: "Select one or more options",
-        field: "vibe",
-        component: <VibeQuestion value={formData.vibe} onChange={(value) => updateFormData("vibe", value)} />,
-      },
-      {
-        title: "How far are you willing to travel from your residence?",
-        subtitle: "Select one option",
-        field: "distance",
-        component: <DistanceQuestion value={formData.distance} onChange={(value) => updateFormData("distance", value)} />,
-      },
-      {
-        title: "Do you need food availability?",
-        subtitle: "Select one option",
-        field: "food",
-        component: <BooleanQuestion value={formData.food} onChange={(value) => updateFormData("food", value)} />,
-      },
-      {
-        title: "Do you need plugs/outlets?",
-        subtitle: "Select one option if relevant",
-        field: "plugs",
-        skip: shouldSkipPlugsQuestion,
-        component: <BooleanQuestion value={formData.plugs} onChange={(value) => updateFormData("plugs", value)} />,
-      },
-      {
-        title: "Do you need WiFi?",
-        subtitle: "Select one option",
-        field: "wifi",
-        component: <BooleanQuestion value={formData.wifi} onChange={(value) => updateFormData("wifi", value)} />,
-      },
-      {
-        title: "What ambience do you prefer?",
-        subtitle: "Select one option",
-        field: "ambience",
-        component: <AmbienceQuestion value={formData.ambience} onChange={(value) => updateFormData("ambience", value)} />,
-      },
-      {
-        title: "Do you need wheelchair accessibility?",
-        subtitle: "Select one option",
-        field: "wheelchairAccessible",
-        component: (
-          <BooleanQuestion
-            value={formData.wheelchairAccessible}
-            onChange={(value) => updateFormData("wheelchairAccessible", value)}
-          />
-        ),
-      },
-    ]
-    
-    // Filter out questions that should be skipped
-    return allQuestions.filter(question => !question.skip)
-  }
-  
-  const questions = buildQuestions()
+
+  const questions = [
+    {
+      title: "Do you prefer indoor or outdoor locations?",
+      subtitle: "Select one option or 'No Preference' to see all",
+      component: (
+        <LocationTypeQuestion
+          value={formData.locationType}
+          onChange={(value) => updateFormData("locationType", value)}
+        />
+      ),
+    },
+    {
+      title: "What's your budget per person?",
+      subtitle: "Select one option or 'No Preference' to see all",
+      component: <BudgetQuestion value={formData.budget} onChange={(value) => updateFormData("budget", value)} />,
+    },
+    {
+      title: "What vibe are you looking for?",
+      subtitle: "Select one or more options or 'No Preference' to see all",
+      component: <VibeQuestion value={formData.vibe} onChange={(value) => updateFormData("vibe", value)} />,
+    },
+    {
+      title: "How far are you willing to travel from your residence?",
+      subtitle: "Select one option or 'No Preference' to see all",
+      component: <DistanceQuestion value={formData.distance} onChange={(value) => updateFormData("distance", value)} />,
+    },
+    {
+      title: "Do you need food availability?",
+      subtitle: "Select 'No Preference' if it doesn't matter",
+      component: (
+        <BooleanQuestion 
+          value={formData.food} 
+          onChange={(value) => updateFormData("food", value)}
+          label="Food availability" 
+        />
+      ),
+    },
+    {
+      title: "Do you need plugs/outlets?",
+      subtitle: "Select 'No Preference' if it doesn't matter",
+      component: (
+        <BooleanQuestion 
+          value={formData.plugs} 
+          onChange={(value) => updateFormData("plugs", value)}
+          label="Plug availability" 
+        />
+      ),
+    },
+    {
+      title: "Do you need WiFi?",
+      subtitle: "Select 'No Preference' if it doesn't matter",
+      component: (
+        <BooleanQuestion 
+          value={formData.wifi} 
+          onChange={(value) => updateFormData("wifi", value)}
+          label="WiFi availability" 
+        />
+      ),
+    },
+    {
+      title: "What ambience do you prefer?",
+      subtitle: "Select one option or 'No Preference' to see all",
+      component: <AmbienceQuestion value={formData.ambience} onChange={(value) => updateFormData("ambience", value)} />,
+    },
+    {
+      title: "Do you need wheelchair accessibility?",
+      subtitle: "Select 'No Preference' if it doesn't matter",
+      component: (
+        <BooleanQuestion
+          value={formData.wheelchairAccessible}
+          onChange={(value) => updateFormData("wheelchairAccessible", value)}
+          label="Wheelchair accessibility"
+        />
+      ),
+    },
+  ]
 
   const goToNextStep = () => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      // If we skipped any questions, make sure they have default values
-      const finalFormData = { ...formData }
-      if (shouldSkipPlugsQuestion) {
-        finalFormData.plugs = false // Default value for outdoor locations
-      }
-      
-      onSubmit(finalFormData)
+      onSubmit(formData)
     }
   }
 
@@ -136,27 +134,43 @@ export function WeekendPlannerForm({ onSubmit }: WeekendPlannerFormProps) {
   }
 
   const isNextDisabled = () => {
-    // Get the field for the current step
-    const currentField = questions[currentStep].field as keyof FormData
+    const currentField = Object.keys(formData)[currentStep] as keyof FormData
     const currentValue = formData[currentField]
 
-    // For vibe field, check if there's at least one vibe selected
     if (currentField === "vibe") {
       return (currentValue as string[]).length === 0
     }
 
-    // All other fields allow null (no preference)
-    return false
+    // "No Preference" values are valid - either null for booleans or "no-preference" for strings
+    return currentValue === undefined
   }
 
   const progress = ((currentStep + 1) / questions.length) * 100
+  
+  // Info button with quick explanation about "No Preference"
+  const noPreferenceInfo = (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="ghost" size="sm" className="rounded-full p-2 absolute top-6 right-6">
+            <Info className="h-5 w-5 text-gray-400" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="w-64 text-sm">Throughout this form, selecting "No Preference" means you are fine with any option for that criteria. We'll use this to show you a wider range of recommendations.</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
 
   return (
     <div className="relative">
       <ProgressBar progress={progress} />
 
       <Card className="mt-4 shadow-lg border-0">
-        <CardContent className="p-6">
+        <CardContent className="p-6 relative">
+          {noPreferenceInfo}
+          
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
