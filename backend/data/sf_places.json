@@ -1,0 +1,59 @@
+[
+    {
+      "id": "dolores_park",
+      "name": "Dolores Park",
+      "description": "Sunny park with stunning city views, perfect for picnics and people-watching.",
+      "address": "Dolores St & 19th St, San Francisco, CA 94114",
+      "website": "https://sfrecpark.org/destination/mission-dolores-park/",
+      "image": "/images/dolores-park.png",
+      "attributes": {
+        "locationType": "outdoor",
+        "budget": "free",
+        "vibe": ["chill", "social", "romantic", "sport"],
+        "distance": "short",
+        "food": true,
+        "plugs": false,
+        "wifi": false,
+        "ambience": "crowded",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "sightglass_coffee",
+      "name": "Sightglass Coffee",
+      "description": "Artisanal coffee roaster with industrial-chic space, perfect for studying or meetings.",
+      "address": "270 7th St, San Francisco, CA 94103",
+      "website": "https://sightglasscoffee.com",
+      "image": "/images/sightglass.png",
+      "attributes": {
+        "locationType": "indoor",
+        "budget": "low",
+        "vibe": ["chill", "study"],
+        "distance": "short",
+        "food": true,
+        "plugs": true,
+        "wifi": true,
+        "ambience": "quiet",
+        "wheelchairAccessible": true
+      }
+    },
+    {
+      "id": "golden_gate_park",
+      "name": "Golden Gate Park",
+      "description": "Vast urban park with gardens, museums, and recreational areas.",
+      "address": "501 Stanyan St, San Francisco, CA 94117",
+      "website": "https://goldengatepark.com",
+      "image": "/images/golden-gate-park.png",
+      "attributes": {
+        "locationType": "outdoor",
+        "budget": "free",
+        "vibe": ["sport", "chill", "romantic"],
+        "distance": "high",
+        "food": true,
+        "plugs": false,
+        "wifi": false,
+        "ambience": "crowded",
+        "wheelchairAccessible": true
+      }
+    }
+  ]
