@@ -15,13 +15,26 @@ interface PlugsQuestionProps {
 }
 
 export function PlugsQuestion({ value, onChange }: PlugsQuestionProps) {
-  const handleSelection = (selected: boolean) => {
-    if (value === selected) {
-      onChange(null)
-    } else {
-      onChange(selected)
-    }
+  // For FoodQuestion, WifiQuestion, PlugsQuestion, WheelchairAccessibilityQuestion
+const handleSelection = (selected: boolean) => {
+  // If current value matches selected, toggle it off
+  if (value === selected) {
+    onChange(null); // Setting to null (no preference)
+  } else {
+    onChange(selected);
   }
+}
+
+// For "No Preference" button
+const handleNoPreference = () => {
+  // Toggle - if it's already null, clear it
+  if (value === null) {
+    // This should set it to some default, let's say "true"
+    onChange(true);
+  } else {
+    onChange(null);
+  }
+}
 
   return (
     <div className="space-y-4">

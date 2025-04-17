@@ -16,26 +16,26 @@ interface FoodQuestionProps {
 
 export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
   // Toggle selection
-  const handleSelection = (selected: boolean) => {
-    // If the same button is clicked again, deselect it
-    if (value === selected) {
-      onChange(null)
-    } else {
-      onChange(selected)
-    }
+  // For FoodQuestion, WifiQuestion, PlugsQuestion, WheelchairAccessibilityQuestion
+const handleSelection = (selected: boolean) => {
+  // If current value matches selected, toggle it off
+  if (value === selected) {
+    onChange(null); // Setting to null (no preference)
+  } else {
+    onChange(selected);
   }
+}
 
-  // Create a special "no-preference" state distinct from null
-  const handleNoPreference = () => {
-    // Toggle between null and "special no preference state"
-    if (value === null) {
-      // Special case - use true here but it could be any non-null value
-      // It will be treated as null in the backend (api.ts transformFormData)
-      onChange(null)
-    } else {
-      onChange(null)
-    }
+// For "No Preference" button
+const handleNoPreference = () => {
+  // Toggle - if it's already null, clear it
+  if (value === null) {
+    // This should set it to some default, let's say "true"
+    onChange(true);
+  } else {
+    onChange(null);
   }
+}
 
   return (
     <div className="space-y-4">

@@ -36,6 +36,7 @@ const transformFormData = (formData: FormData) => {
     transformed.distance = null;
   }
   
+  
   if (transformed.ambience === "no-preference") {
     transformed.ambience = null;
   }
