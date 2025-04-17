@@ -1,4 +1,3 @@
-//wheelchair-accessibility-question.tsx:
 "use client"
 
 import { Info } from "lucide-react"
@@ -32,7 +31,6 @@ export function WheelchairAccessibilityQuestion({ value, onChange }: WheelchairA
           variant={value === true ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(true)}
-          disabled={value === null}
         >
           <span className="text-2xl">✅</span>
           <span>Yes</span>
@@ -42,7 +40,6 @@ export function WheelchairAccessibilityQuestion({ value, onChange }: WheelchairA
           variant={value === false ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(false)}
-          disabled={value === null}
         >
           <span className="text-2xl">❌</span>
           <span>No</span>
@@ -54,7 +51,7 @@ export function WheelchairAccessibilityQuestion({ value, onChange }: WheelchairA
               <Button
                 variant={value === null ? "default" : "outline"}
                 className="h-24 flex flex-col items-center justify-center gap-2 relative"
-                onClick={() => onChange(null)}
+                onClick={() => value === null ? onChange(true) : onChange(null)}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>

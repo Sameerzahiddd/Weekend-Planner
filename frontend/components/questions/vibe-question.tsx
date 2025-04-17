@@ -1,4 +1,3 @@
-//vibe-question.tsx:
 "use client"
 
 import { Info } from "lucide-react"
@@ -18,9 +17,28 @@ interface VibeQuestionProps {
 
 export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
   const toggleVibe = (vibe: string) => {
+    if (vibe === "no-preference") {
+      // Toggle no-preference
+      if (value.includes("no-preference")) {
+        onChange([])
+      } else {
+        onChange(["no-preference"])
+      }
+      return
+    }
+    
+    // Check if "no-preference" is selected
+    if (value.includes("no-preference")) {
+      // Remove "no-preference" and add the selected vibe
+      onChange([vibe])
+      return
+    }
+    
+    // Normal toggle logic
     if (value.includes(vibe)) {
       // Remove the vibe if it's already selected
-      onChange(value.filter((v) => v !== vibe))
+      const newValue = value.filter((v) => v !== vibe)
+      onChange(newValue.length > 0 ? newValue : [])
     } else {
       // Add the vibe if it's not selected
       onChange([...value, vibe])
@@ -29,15 +47,6 @@ export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
 
   const clearSelection = () => {
     onChange([])
-  }
-
-  const selectNoPreference = () => {
-    // Toggle no-preference
-    if (value.includes("no-preference")) {
-      onChange([])
-    } else {
-      onChange(["no-preference"])
-    }
   }
 
   return (
@@ -103,7 +112,7 @@ export function VibeQuestion({ value, onChange }: VibeQuestionProps) {
               <Button
                 variant={value.includes("no-preference") ? "default" : "outline"}
                 className="h-20 flex flex-col items-center justify-center gap-2 relative"
-                onClick={selectNoPreference}
+                onClick={() => toggleVibe("no-preference")}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>

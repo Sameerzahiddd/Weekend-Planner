@@ -1,4 +1,3 @@
-//food-question.tsx:
 "use client"
 
 import { Info } from "lucide-react"
@@ -16,11 +15,25 @@ interface FoodQuestionProps {
 }
 
 export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
+  // Toggle selection
   const handleSelection = (selected: boolean) => {
+    // If the same button is clicked again, deselect it
     if (value === selected) {
       onChange(null)
     } else {
       onChange(selected)
+    }
+  }
+
+  // Create a special "no-preference" state distinct from null
+  const handleNoPreference = () => {
+    // Toggle between null and "special no preference state"
+    if (value === null) {
+      // Special case - use true here but it could be any non-null value
+      // It will be treated as null in the backend (api.ts transformFormData)
+      onChange(null)
+    } else {
+      onChange(null)
     }
   }
 
@@ -32,7 +45,6 @@ export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
           variant={value === true ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(true)}
-          disabled={value === null}
         >
           <span className="text-2xl">✅</span>
           <span>Yes</span>
@@ -42,7 +54,6 @@ export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
           variant={value === false ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(false)}
-          disabled={value === null}
         >
           <span className="text-2xl">❌</span>
           <span>No</span>
@@ -54,7 +65,7 @@ export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
               <Button
                 variant={value === null ? "default" : "outline"}
                 className="h-24 flex flex-col items-center justify-center gap-2 relative"
-                onClick={() => onChange(null)}
+                onClick={handleNoPreference}
               >
                 <span className="text-2xl">🤷</span>
                 <span>No Preference</span>
