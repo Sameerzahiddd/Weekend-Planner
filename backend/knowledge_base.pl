@@ -46,7 +46,7 @@ check_preference(X, Attribute) :-
     attribute_value(X, Attribute, Value),
     % Ask the user about their preference for this attribute
     ask(Value, Attribute, Response),
-    % The place satisfies the preference if the response is "yes"
+    % The place satisfies the preference if the response is yes
     Response = yes.
 
 % Ask the user about their preference

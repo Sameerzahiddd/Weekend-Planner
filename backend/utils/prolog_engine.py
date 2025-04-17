@@ -13,12 +13,17 @@ class PrologEngine:
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
             kb_path = os.path.join(os.path.dirname(current_dir), filename)
+            if not os.path.exists(kb_path):
+                raise FileNotFoundError(f"Knowledge base file not found at {kb_path}")
             self.prolog.consult(kb_path)
             # Clear known facts
             list(self.prolog.query("retractall(known(_,_,_))"))
             return True
+        except FileNotFoundError as e:
+            print(f"Knowledge base error: {e}")
+            return False
         except Exception as e:
-            print(f"Error loading knowledge base: {e}")
+            print(f"Error loading knowledge base: {str(e)}")
             return False
     
     def registerFunctions(self):
@@ -115,18 +120,28 @@ class PrologEngine:
     def query_recommendations(self, form_data):
         """Get recommendations based on form data"""
         try:
+            if not form_data:
+                raise ValueError("Form data is empty or invalid")
+
             # Map the form data to Prolog format
             self.map_form_data_to_prolog(form_data)
             
             # Query Prolog for recommendations
             recommendations = []
-            for result in self.prolog.query("recommendation(X)"):
-                recommendation_name = result["X"]
-                recommendations.append(recommendation_name)
+            try:
+                for result in self.prolog.query("recommendation(X)"):
+                    recommendation_name = result["X"]
+                    recommendations.append(recommendation_name)
+            except Exception as e:
+                print(f"Prolog query error: {str(e)}")
+                raise
             
             # Get the full data for each recommendation
             current_dir = os.path.dirname(os.path.abspath(__file__))
             data_path = os.path.join(os.path.dirname(current_dir), 'data', 'sf_places.json')
+            
+            if not os.path.exists(data_path):
+                raise FileNotFoundError(f"Places data file not found at {data_path}")
             
             with open(data_path, 'r') as f:
                 places = json.load(f)
@@ -134,8 +149,17 @@ class PrologEngine:
             # Filter places based on recommendations
             result = [place for place in places if place["id"] in recommendations]
             
+            if not result:
+                print("No recommendations found matching the criteria")
+            
             return result
         
+        except ValueError as e:
+            print(f"Validation error: {str(e)}")
+            return []
+        except FileNotFoundError as e:
+            print(f"Data file error: {str(e)}")
+            return []
         except Exception as e:
-            print(f"Error querying recommendations: {e}")
+            print(f"Error querying recommendations: {str(e)}")
             return []

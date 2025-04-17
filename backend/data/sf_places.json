@@ -1,59 +1,1048 @@
 [
-    {
-      "id": "dolores_park",
-      "name": "Dolores Park",
-      "description": "Sunny park with stunning city views, perfect for picnics and people-watching.",
-      "address": "Dolores St & 19th St, San Francisco, CA 94114",
-      "website": "https://sfrecpark.org/destination/mission-dolores-park/",
-      "image": "/images/dolores-park.png",
+  {
+      "id": "cherry_blossom_festival",
+      "name": "Cherry Blossom Festival",
+      "description": "Traditional Japanese Performances, food stalls, and cultural exhibitions celebrating Japanese culture in San Francisco.",
+      "address": "1610 Geary Blvd, San Francisco, CA",
+      "website": "https://sfcherryblossom.org/",
+      "image": "/images/cherry-blossom-festival.png",
       "attributes": {
-        "locationType": "outdoor",
-        "budget": "free",
-        "vibe": ["chill", "social", "romantic", "sport"],
-        "distance": "short",
-        "food": true,
-        "plugs": false,
-        "wifi": false,
-        "ambience": "crowded",
-        "wheelchairAccessible": true
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["social"],
+          "distance": "high",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
       }
+  },
+  {
+      "id": "earth_day_festival",
+      "name": "Earth Day Festival",
+      "description": "Earth Day celebration with live music, eco-friendly vendors, and educational workshops promoting environmental awareness.",
+      "address": "750 Howard St., San Francisco, CA",
+      "website": "https://yerbabuenagardens.org/events/2025earthday/",
+      "image": "/images/earth-day-festival.png",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["social"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "sf_art_fair",
+      "name": "SF Art Fair",
+      "description": "Contemporary and Modern artworks from over 70 galleries, showcasing the vibrant San Francisco art scene.",
+      "address": "2 Marina Blvd Landmark Building C, Suite 260, San Francisco, CA",
+      "website": "https://sanfranciscoartfair.com/",
+      "image": "/images/sf-art-fair.png",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "free",
+          "vibe": ["social"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "sunset_dunes_park",
+      "name": "Sunset Dunes Park",
+      "description": "Scenic oceanfront park offering stunning views and a relaxing atmosphere.",
+      "address": "Great Hwy & Noriega St., San Francisco, CA",
+      "website": "https://sfrecpark.org/1555/Sunset-Dunes",
+      "image": "/images/sunset-dunes-park.png",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["chill", "social", "romantic"],
+          "distance": "high",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "candlelight_concert",
+      "name": "Candlelight Concert",
+      "description": "Intimate classical music performance in a unique candlelight setting.",
+      "address": "4705 3rd St., San Francisco, CA",
+      "website": "https://www.san-francisco-theater.com/shows/bayview-opera-house/candlelight-rings-dragons",
+      "image": "/images/candlelight-concert.png",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "high",
+          "vibe": ["romantic"],
+          "distance": "medium",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "sf_giants_home_game",
+      "name": "SF Giants Home Game",
+      "description": "Exciting baseball game at Oracle Park, home of the San Francisco Giants.",
+      "address": "24 Willie Mays Plaza, San Francisco, CA",
+      "website": "https://www.mlb.com/giants",
+      "image": "/images/sf-giants-game.png",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "high",
+          "vibe": ["social", "sport"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "fat_ham_sf_playhouse",
+      "name": "Fat Ham at SF Playhouse",
+      "description": "Pulitzer Prize-winning play: a modern, queer Southern reimagining of Shakespeare's Hamlet, set at a family barbecue.",
+      "address": "450 Post St., San Francisco, CA",
+      "website": "https://www.sfplayhouse.org/sfph/2024-2025-season/fat-ham/",
+      "image": "/images/fat-ham-playhouse.png",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["chill", "social", "romantic"],
+          "distance": "short",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "benchmark_climbing",
+      "name": "Benchmark Climbing",
+      "description": "Indoor climbing gym offering challenges for climbers of all skill levels.",
+      "address": "1414 Van Ness Ave, San Francisco, CA 94109",
+      "website": "https://www.benchmarkclimbing.com/",
+      "image": "/images/benchmark-climbing.png", 
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "high",
+          "vibe": ["sport", "social"],
+          "distance": "short",
+          "food": false,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": false
+      }
+  },
+  {
+      "id": "blue_bottle_coffee",
+      "name": "Blue Bottle Coffee",
+      "description": "Modern coffee shop known for high-quality, freshly roasted coffee and a minimalist atmosphere.",
+      "address": "705 Market Street, San Francisco, CA",
+      "website": "https://bluebottlecoffee.com/us/eng",
+      "image": "/images/blue-bottle-coffee.png",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["chill", "study", "social"],
+          "distance": "short",
+          "food": true,
+          "plugs": true,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "sff_mission_bay",
+      "name": "SFF Mission Bay Soccer Field",
+      "description": "Urban soccer field where you can play solo or with friends in the Mission Bay area.",
+      "address": "701 Mission Bay Boulevard North, San Francisco, CA 94158",
+      "website": "https://www.sffsoccer.com/",
+      "image": "/images/mission-bay-soccer.png",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["sport", "social"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+      {
+          "id": "emotion_air_installations",
+          "name": "EmotionAir Installations",
+          "description": "Inflatable Installations, blending art with emotion in a sensory experience.",
+          "address": "3601 Lyon St, San Francisco, CA",
+          "website": "https://tickets.balloonmuseum.world/emotion-air-san-francisco/",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "high",
+              "vibe": ["social", "romantic"],
+              "distance": "medium",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "bay_area_brew_festival",
+          "name": "Bay Area Brew Festival",
+          "description": "Featuring over 50 breweries, beers, food trucks and DJs.",
+          "address": "105 Montgomery St., San Francisco, CA",
+          "website": "https://www.bayareabrewfestival.com/",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "high",
+              "vibe": ["social", "chill"],
+              "distance": "short",
+              "food": true,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "chess_night_game",
+          "name": "Chess Night Game",
+          "description": "Community chess gathering for enthusiasts and players of all skill levels.",
+          "address": "2131 Lombard Street, San Francisco, CA",
+          "website": "https://docs.google.com/spreadsheets/d/12YhXN0mMB7BfGv36T4jn-orYDwi7aN9JXiVeZ5eKl98/edit?gid=0#gid=0",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "free",
+              "vibe": [],
+              "distance": "short",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "japanese_tea_garden",
+          "name": "Japanese Tea Garden",
+          "description": "Located in Golden Gate Park, this serene garden features traditional Japanese architecture, koi ponds, bonsai trees, and a tea house.",
+          "address": "75 Hagiwara Tea Garden Drive, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "low",
+              "vibe": ["chill", "romantic"],
+              "distance": "medium",
+              "food": true,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "downtown_first_thursdays",
+          "name": "Downtown First Thursdays",
+          "description": "A monthly art and culture night where museums, galleries, and local businesses in downtown areas open late with free or discounted admission, special exhibits, and live performances.",
+          "address": "Between Market & Howard, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "free",
+              "vibe": ["social", "romantic"],
+              "distance": "short",
+              "food": true,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "balloon_museum",
+          "name": "Balloon Museum",
+          "description": "The museum of inflatable art with 60 artists from around the globe.",
+          "address": "Palace of Fine Arts, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "low",
+              "vibe": ["social", "romantic"],
+              "distance": "medium",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "asian_art_museum",
+          "name": "Asian Art Museum",
+          "description": "One of the largest museums in the Western world devoted exclusively to Asian art.",
+          "address": "Larkin Street, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "low",
+              "vibe": ["chill", "romantic"],
+              "distance": "short",
+              "food": true,
+              "plugs": false,
+              "wifi": true,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "queen_wilhelmina_tulip_garden",
+          "name": "Queen Wilhelmina Tulip Garden",
+          "description": "A beautiful, seasonal garden located near the Dutch Windmill in Golden Gate Park. It's filled with vibrant tulips and other spring flowers.",
+          "address": "1690 John F Kennedy Dr, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "free",
+              "vibe": ["romantic", "chill"],
+              "distance": "high",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "painted_ladies",
+          "name": "Painted Ladies",
+          "description": "Iconic Victorian-style houses famous for their vibrant colors and postcard-perfect view with the San Francisco skyline in the background.",
+          "address": "Steiner Street, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "free",
+              "vibe": ["social", "romantic"],
+              "distance": "short",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "fishermans_wharf",
+          "name": "Fisherman's Wharf",
+          "description": "The neighborhood known for its seafood (especially clam chowder in sourdough bowls), street performers, sea lions at Pier 39, souvenir shops, and attractions like Madame Tussauds and the Aquarium.",
+          "address": "Beach Street, San Francisco, CA",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "both",
+              "budget": "low",
+              "vibe": ["social", "romantic"],
+              "distance": "short",
+              "food": true,
+              "plugs": false,
+              "wifi": true,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "lands_end",
+          "name": "Lands End",
+          "description": "Scenic hiking trails with breathtaking views of the Golden Gate Bridge and the Pacific Ocean.",
+          "address": "680 Point Lobos Ave, San Francisco, CA 94121",
+          "website": "https://www.nps.gov/goga/planyourvisit/landsend.htm",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "free",
+              "vibe": ["sport", "social"],
+              "distance": "medium",
+              "food": false,
+              "plugs": false,
+              "wifi": false,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "andytown_salesforce",
+          "name": "AndyTown at Salesforce",
+          "description": "Coffee shop and workspace within the Salesforce ecosystem.",
+          "address": "",
+          "website": "",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "low",
+              "vibe": ["study", "chill"],
+              "distance": "short",
+              "food": true,
+              "plugs": true,
+              "wifi": true,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "ymca",
+          "name": "YMCA",
+          "description": "Gym, swimming, sauna, and various fitness facilities.",
+          "address": "169 Steuart St, San Francisco, CA 94105",
+          "website": "https://www.ymcasf.org/location/embarcadero-ymca/",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "high",
+              "vibe": ["sport"],
+              "distance": "short",
+              "food": false,
+              "plugs": false,
+              "wifi": true,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "the_crossing",
+          "name": "The Crossing",
+          "description": "Paddle sports and recreational facility.",
+          "address": "250 Main St, San Francisco, CA 94105",
+          "website": "https://www.eastcutcrossing.com/",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "outdoor",
+              "budget": "low",
+              "vibe": ["sport", "social"],
+              "distance": "short",
+              "food": true,
+              "plugs": false,
+              "wifi": true,
+              "ambience": "crowded",
+              "wheelchairAccessible": true
+          }
+      },
+      {
+          "id": "cafe_reveille",
+          "name": "Cafe Reveille",
+          "description": "Cozy cafe with great coffee and study-friendly atmosphere.",
+          "address": "1998 Polk Street, San Francisco, CA",
+          "website": "https://www.cafereveille.com/",
+          "image": "Image here",
+          "attributes": {
+              "locationType": "indoor",
+              "budget": "low",
+              "vibe": ["chill", "study", "social"],
+              "distance": "short",
+              "food": true,
+              "plugs": true,
+              "wifi": true,
+              "ambience": "quiet",
+              "wheelchairAccessible": true
+          }
+      },
+    {
+        "id": "emotion_air_installations",
+        "name": "EmotionAir Installations",
+        "description": "Inflatable Installations, blending art with emotion in a sensory experience.",
+        "address": "3601 Lyon St, San Francisco, CA",
+        "website": "https://tickets.balloonmuseum.world/emotion-air-san-francisco/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "high",
+            "vibe": ["social", "romantic"],
+            "distance": "medium",
+            "food": false,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "crowded",
+            "wheelchairAccessible": true
+        }
     },
     {
-      "id": "sightglass_coffee",
-      "name": "Sightglass Coffee",
-      "description": "Artisanal coffee roaster with industrial-chic space, perfect for studying or meetings.",
-      "address": "270 7th St, San Francisco, CA 94103",
-      "website": "https://sightglasscoffee.com",
-      "image": "/images/sightglass.png",
+        "id": "bay_area_brew_festival",
+        "name": "Bay Area Brew Festival",
+        "description": "Featuring over 50 breweries, beers, food trucks and DJs.",
+        "address": "105 Montgomery St., San Francisco, CA",
+        "website": "https://www.bayareabrewfestival.com/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "high",
+            "vibe": ["social", "chill"],
+            "distance": "short",
+            "food": true,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "crowded",
+            "wheelchairAccessible": true
+        }
+  },
+  {
+      "id": "chess_night_game",
+      "name": "Chess Night Game",
+      "description": "Community chess gathering for enthusiasts and players of all skill levels.",
+      "address": "2131 Lombard Street, San Francisco, CA",
+      "website": "https://docs.google.com/spreadsheets/d/12YhXN0mMB7BfGv36T4jn-orYDwi7aN9JXiVeZ5eKl98/edit?gid=0#gid=0",
+      "image": "Image here",
       "attributes": {
-        "locationType": "indoor",
-        "budget": "low",
-        "vibe": ["chill", "study"],
-        "distance": "short",
-        "food": true,
-        "plugs": true,
-        "wifi": true,
-        "ambience": "quiet",
-        "wheelchairAccessible": true
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": [],
+          "distance": "short",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
       }
+  },
+  {
+      "id": "japanese_tea_garden",
+      "name": "Japanese Tea Garden",
+      "description": "Located in Golden Gate Park, this serene garden features traditional Japanese architecture, koi ponds, bonsai trees, and a tea house.",
+      "address": "75 Hagiwara Tea Garden Drive, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "low",
+          "vibe": ["chill", "romantic"],
+          "distance": "medium",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "downtown_first_thursdays",
+      "name": "Downtown First Thursdays",
+      "description": "A monthly art and culture night where museums, galleries, and local businesses in downtown areas open late with free or discounted admission, special exhibits, and live performances.",
+      "address": "Between Market & Howard, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["social", "romantic"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "balloon_museum",
+      "name": "Balloon Museum",
+      "description": "The museum of inflatable art with 60 artists from around the globe.",
+      "address": "Palace of Fine Arts, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["social", "romantic"],
+          "distance": "medium",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "asian_art_museum",
+      "name": "Asian Art Museum",
+      "description": "One of the largest museums in the Western world devoted exclusively to Asian art.",
+      "address": "Larkin Street, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["chill", "romantic"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "queen_wilhelmina_tulip_garden",
+      "name": "Queen Wilhelmina Tulip Garden",
+      "description": "A beautiful, seasonal garden located near the Dutch Windmill in Golden Gate Park. It's filled with vibrant tulips and other spring flowers.",
+      "address": "1690 John F Kennedy Dr, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["romantic", "chill"],
+          "distance": "high",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "painted_ladies",
+      "name": "Painted Ladies",
+      "description": "Iconic Victorian-style houses famous for their vibrant colors and postcard-perfect view with the San Francisco skyline in the background.",
+      "address": "Steiner Street, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["social", "romantic"],
+          "distance": "short",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "fishermans_wharf",
+      "name": "Fisherman's Wharf",
+      "description": "The neighborhood known for its seafood (especially clam chowder in sourdough bowls), street performers, sea lions at Pier 39, souvenir shops, and attractions like Madame Tussauds and the Aquarium.",
+      "address": "Beach Street, San Francisco, CA",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "both",
+          "budget": "low",
+          "vibe": ["social", "romantic"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "lands_end",
+      "name": "Lands End",
+      "description": "Scenic hiking trails with breathtaking views of the Golden Gate Bridge and the Pacific Ocean.",
+      "address": "680 Point Lobos Ave, San Francisco, CA 94121",
+      "website": "https://www.nps.gov/goga/planyourvisit/landsend.htm",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "free",
+          "vibe": ["sport", "social"],
+          "distance": "medium",
+          "food": false,
+          "plugs": false,
+          "wifi": false,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "andytown_salesforce",
+      "name": "AndyTown at Salesforce",
+      "description": "Coffee shop and workspace within the Salesforce ecosystem.",
+      "address": "",
+      "website": "",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["study", "chill"],
+          "distance": "short",
+          "food": true,
+          "plugs": true,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "ymca",
+      "name": "YMCA",
+      "description": "Gym, swimming, sauna, and various fitness facilities.",
+      "address": "169 Steuart St, San Francisco, CA 94105",
+      "website": "https://www.ymcasf.org/location/embarcadero-ymca/",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "high",
+          "vibe": ["sport"],
+          "distance": "short",
+          "food": false,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "the_crossing",
+      "name": "The Crossing",
+      "description": "Paddle sports and recreational facility.",
+      "address": "250 Main St, San Francisco, CA 94105",
+      "website": "https://www.eastcutcrossing.com/",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "outdoor",
+          "budget": "low",
+          "vibe": ["sport", "social"],
+          "distance": "short",
+          "food": true,
+          "plugs": false,
+          "wifi": true,
+          "ambience": "crowded",
+          "wheelchairAccessible": true
+      }
+  },
+  {
+      "id": "cafe_reveille",
+      "name": "Cafe Reveille",
+      "description": "Cozy cafe with great coffee and study-friendly atmosphere.",
+      "address": "1998 Polk Street, San Francisco, CA",
+      "website": "https://www.cafereveille.com/",
+      "image": "Image here",
+      "attributes": {
+          "locationType": "indoor",
+          "budget": "low",
+          "vibe": ["chill", "study", "social"],
+          "distance": "short",
+          "food": true,
+          "plugs": true,
+          "wifi": true,
+          "ambience": "quiet",
+          "wheelchairAccessible": true
+      }
+  },
+  
+    {
+        "id": "china_camp_state_park",
+        "name": "China Camp State Park",
+        "description": "Scenic state park offering camping, hiking, and beautiful bay views with rich historical significance.",
+        "address": "101 Peacock Gap Trail, San Rafael, CA 94901",
+        "website": "https://friendsofchinacamp.org/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "high",
+            "vibe": ["chill", "sport", "social", "romantic"],
+            "distance": "high",
+            "food": true,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
     },
     {
-      "id": "golden_gate_park",
-      "name": "Golden Gate Park",
-      "description": "Vast urban park with gardens, museums, and recreational areas.",
-      "address": "501 Stanyan St, San Francisco, CA 94117",
-      "website": "https://goldengatepark.com",
-      "image": "/images/golden-gate-park.png",
-      "attributes": {
-        "locationType": "outdoor",
-        "budget": "free",
-        "vibe": ["sport", "chill", "romantic"],
-        "distance": "high",
-        "food": true,
-        "plugs": false,
-        "wifi": false,
-        "ambience": "crowded",
-        "wheelchairAccessible": true
-      }
+        "id": "joe_and_the_juice",
+        "name": "Joe & the Juice",
+        "description": "Modern juice and coffee bar with a vibrant atmosphere, perfect for studying or meeting friends.",
+        "address": "235 Montgomery St., San Francisco, CA",
+        "website": "https://www.joejuice.com/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "low",
+            "vibe": ["chill", "study", "social"],
+            "distance": "short",
+            "food": true,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "crowded",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "peets_coffee",
+        "name": "Peet's Coffee",
+        "description": "Classic coffee shop offering high-quality coffee and a comfortable study environment.",
+        "address": "773 Market Street, San Francisco, CA",
+        "website": "https://www.peets.com/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "low",
+            "vibe": ["chill", "study", "social"],
+            "distance": "short",
+            "food": true,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "crowded",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "motoring_coffee",
+        "name": "Motoring Coffee",
+        "description": "Unique coffee shop with a automotive-inspired aesthetic and relaxed atmosphere.",
+        "address": "1525 Union Street, San Francisco, CA",
+        "website": "https://www.motoring.coffee/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "low",
+            "vibe": ["chill", "study", "social"],
+            "distance": "short",
+            "food": true,
+            "plugs": false,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "him_mark_lai_branch_library",
+        "name": "Him Mark Lai Branch Library",
+        "description": "Chinatown Library offering a quiet space for study and research with cultural significance.",
+        "address": "1135 Powell Street, San Francisco, CA",
+        "website": "https://sfpl.org/locations/chinatown",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "free",
+            "vibe": ["study"],
+            "distance": "short",
+            "food": false,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": false
+        }
+    },
+    {
+        "id": "mission_bay_branch_library",
+        "name": "Mission Bay Branch Library",
+        "description": "Modern library in the Mission Bay area, providing a peaceful study environment.",
+        "address": "960 4th Street, San Francisco, CA",
+        "website": "https://sfpl.org/locations/mission-bay",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "free",
+            "vibe": ["study"],
+            "distance": "short",
+            "food": false,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "sf_public_library",
+        "name": "San Francisco Public Library",
+        "description": "Main branch of San Francisco's public library system, offering extensive resources and study spaces.",
+        "address": "100 Larkin Street, San Francisco, CA",
+        "website": "https://sfpl.org/locations/main-library",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "free",
+            "vibe": ["study"],
+            "distance": "short",
+            "food": false,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": false
+        }
+    },
+    {
+        "id": "potrero_branch_library",
+        "name": "Potrero Branch Library",
+        "description": "Neighborhood library in Potrero Hill, offering a quiet space for reading and studying.",
+        "address": "1616 20th Street, San Francisco, CA",
+        "website": "https://sfpl.org/locations/potrero",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "free",
+            "vibe": ["study"],
+            "distance": "short",
+            "food": false,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "golden_gate_valley_branch_library",
+        "name": "Golden Gate Valley Branch Library",
+        "description": "Charming neighborhood library offering a peaceful study environment with local character.",
+        "address": "1801 Green Street, San Francisco, CA",
+        "website": "https://sfpl.org/locations/golden-gate-valley",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "free",
+            "vibe": ["study"],
+            "distance": "short",
+            "food": false,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "ina_coolbrith_park",
+        "name": "Ina Coolbrith Park",
+        "description": "Small, hidden gem in the Russian Hill neighborhood offering panoramic views of the Bay Bridge, Coit Tower, and downtown SF.",
+        "address": "Vallejo & Taylor Streets, San Francisco, CA",
+        "website": "",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "free",
+            "vibe": ["chill", "romantic"],
+            "distance": "short",
+            "food": false,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "quiet",
+            "wheelchairAccessible": false
+        }
+    },
+    {
+        "id": "san_francisco_botanical_garden",
+        "name": "San Francisco Botanical Garden",
+        "description": "Expansive garden within Golden Gate Park featuring over 8,000 different kinds of plants from around the world.",
+        "address": "9th Avenue, San Francisco, CA",
+        "website": "",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "free",
+            "vibe": ["chill", "romantic"],
+            "distance": "medium",
+            "food": true,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "strawberry_hill",
+        "name": "Strawberry Hill",
+        "description": "Scenic hill located in the middle of Stow Lake within Golden Gate Park, featuring walking trails and a waterfall.",
+        "address": "Golden Gate Park, San Francisco, CA",
+        "website": "",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "free",
+            "vibe": ["chill", "romantic"],
+            "distance": "high",
+            "food": false,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "quiet",
+            "wheelchairAccessible": false
+        }
+    },
+    {
+        "id": "pioneer_park",
+        "name": "Pioneer Park",
+        "description": "Historic park atop Telegraph Hill, home to the famous Coit Tower, offering sweeping views of the Bay Area.",
+        "address": "Telegraph Hill Boulevard, San Francisco, CA",
+        "website": "https://maps.app.goo.gl/VVk6ime2wVdmyF7fA",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "outdoor",
+            "budget": "free",
+            "vibe": ["social"],
+            "distance": "short",
+            "food": false,
+            "plugs": false,
+            "wifi": false,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "sightglass_mission",
+        "name": "Sightglass Coffee Mission Location",
+        "description": "Artisan coffee shop with a vibrant atmosphere in the Mission District.",
+        "address": "3014 20th Street, San Francisco, CA",
+        "website": "https://sightglasscoffee.com",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "low",
+            "vibe": ["chill", "study", "social"],
+            "distance": "short",
+            "food": true,
+            "plugs": true,
+            "wifi": true,
+            "ambience": "crowded",
+            "wheelchairAccessible": true
+        }
+    },
+    {
+        "id": "blue_bottle_hayes_valley",
+        "name": "Blue Bottle Coffee Hayes Valley",
+        "description": "Minimalist coffee shop in the trendy Hayes Valley neighborhood.",
+        "address": "315 Linden Street, San Francisco, CA",
+        "website": "https://bluebottlecoffee.com/",
+        "image": "Image here",
+        "attributes": {
+            "locationType": "indoor",
+            "budget": "low",
+            "vibe": ["chill", "social"],
+            "distance": "short",
+            "food": true,
+            "plugs": false,
+            "wifi": true,
+            "ambience": "quiet",
+            "wheelchairAccessible": true
+        }
     }
-  ]
+]
