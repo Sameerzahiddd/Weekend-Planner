@@ -1,8 +1,0 @@
-fastapi==0.110.0
-uvicorn==0.27.1
-pyswip==0.2.10
-pydantic==2.6.1
-python-dotenv==1.0.0
-loguru==0.7.2
-httpx==0.26.0
-starlette==0.36.3
