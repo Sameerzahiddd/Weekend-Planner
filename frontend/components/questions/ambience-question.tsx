@@ -16,7 +16,7 @@ export function AmbienceQuestion({ value, onChange }: AmbienceQuestionProps) {
         className="h-24 flex flex-col items-center justify-center gap-2"
         onClick={() => onChange("quiet")}
       >
-        <Volume2 className="h-6 w-6" />
+        <Volume className="h-6 w-6" />
         <span>Quiet</span>
       </Button>
 
@@ -25,7 +25,7 @@ export function AmbienceQuestion({ value, onChange }: AmbienceQuestionProps) {
         className="h-24 flex flex-col items-center justify-center gap-2"
         onClick={() => onChange("crowded")}
       >
-        <Volume className="h-6 w-6" />
+        <Volume2 className="h-6 w-6" />
         <span>Crowded</span>
       </Button>
 
