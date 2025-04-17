@@ -1,3 +1,4 @@
+//food-question.tsx:
 "use client"
 
 import { Info } from "lucide-react"
@@ -31,7 +32,7 @@ export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
           variant={value === true ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(true)}
-          disabled={value === null && false}
+          disabled={value === null}
         >
           <span className="text-2xl">✅</span>
           <span>Yes</span>
@@ -41,7 +42,7 @@ export function FoodQuestion({ value, onChange }: FoodQuestionProps) {
           variant={value === false ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection(false)}
-          disabled={value === null && false}
+          disabled={value === null}
         >
           <span className="text-2xl">❌</span>
           <span>No</span>

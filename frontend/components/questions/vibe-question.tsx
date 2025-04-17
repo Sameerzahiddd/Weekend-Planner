@@ -1,3 +1,4 @@
+//vibe-question.tsx:
 "use client"
 
 import { Info } from "lucide-react"

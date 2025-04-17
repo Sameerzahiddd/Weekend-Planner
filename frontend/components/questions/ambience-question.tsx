@@ -1,3 +1,4 @@
+//ambience-question.tsx
 "use client"
 
 import { Info } from "lucide-react"
@@ -33,7 +34,7 @@ export function AmbienceQuestion({ value, onChange }: AmbienceQuestionProps) {
           variant={value === "quiet" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection("quiet")}
-          disabled={value === "no-preference"}
+          disabled={value === "no-preference" || value === null}
         >
           <Volume className="h-6 w-6" />
           <span>Quiet</span>
@@ -43,7 +44,7 @@ export function AmbienceQuestion({ value, onChange }: AmbienceQuestionProps) {
           variant={value === "crowded" ? "default" : "outline"}
           className="h-24 flex flex-col items-center justify-center gap-2"
           onClick={() => handleSelection("crowded")}
-          disabled={value === "no-preference"}
+          disabled={value === "no-preference" || value === null}
         >
           <Volume2 className="h-6 w-6" />
           <span>Crowded</span>
