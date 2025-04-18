@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["swipl", "python39", "python39Packages.pip", "python39Packages.setuptools", "python39Packages.wheel"]
+
+[phases.install]
+cmds = ["pip install --upgrade pip", "pip install -r requirements.txt"]
+
+[phases.build]
+cmds = ["python csv_to_kb.py"]
+
+[start]
+cmd = "gunicorn app:create_app() --bind 0.0.0.0:$PORT"

@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+nixpacksPlan = "./nixpacks.toml"
+
+[deploy]
+numReplicas = 1
+startCommand = "gunicorn app:create_app() --bind 0.0.0.0:$PORT"
+restartPolicyType = "ON_FAILURE"
+
+[env]
+FLASK_ENV = "production"
